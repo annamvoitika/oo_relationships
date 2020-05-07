@@ -12,3 +12,10 @@ describe User do
     expect(subject.authenticate('password')).to eq true
   end
 end
+
+describe Authenticator do
+  subject { login = Authenticator.new('123') }
+  it 'authenticates password' do
+    expect(subject.authenticate('123')).to eq true
+  end
+end
