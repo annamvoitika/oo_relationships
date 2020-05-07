@@ -3,12 +3,11 @@ class User
     @name = name
     @bio = bio
     @age = age
-    @password = password
+    @authenticator = Authenticator.new(password)
   end
 
   def authenticate(candidate_password)
-    return true if candidate_password == @password
-    false
+    @authenticator.authenticate(candidate_password)
   end
 
   def profile
@@ -19,5 +18,15 @@ class User
 
   def birth_year
     Time.new.year - @age
+  end
+end
+
+class Authenticator
+  def initialize(password)
+    @password = password
+  end
+  def authenticate(candidate_password)
+    return true if candidate_password == @password
+    false
   end
 end

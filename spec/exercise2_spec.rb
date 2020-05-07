@@ -8,6 +8,7 @@ describe User do
   end
 
   it 'returns true if password is correct' do
+
     expect(subject.authenticate('password')).to eq true
-  end 
+  end
 end
