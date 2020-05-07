@@ -10,11 +10,15 @@ describe User do
   it 'returns true if password is correct' do
     expect(subject.authenticate('password')).to eq true
   end
+
+  it 'returns false if password is incorrect' do
+    expect(subject.authenticate('wrong')).to eq false
+  end 
 end
 
 describe Authenticator do
   subject { login = Authenticator.new('123') }
-  
+
   it 'authenticates password' do
     expect(subject.authenticate('123')).to eq true
   end
